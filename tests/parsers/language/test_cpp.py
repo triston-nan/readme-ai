@@ -171,6 +171,17 @@ def content_makefileam(tmp_path):
 
 
 def test_cmake_parser_valid(cmake_parser, content_cmakelists):
+    """Checks if 'Qt5Widgets' is in the list of dependencies extracted by cmake_parser from a CMakeLists.txt file.
+    Parameters:
+        - cmake_parser (ParserType): An instance of a parser object capable of parsing CMakeLists content.
+        - content_cmakelists (TextIO): An IO wrapper of the CMakeLists.txt file whose text is to be read and parsed.
+    Returns:
+        - None: This function does not return a value. It simply asserts a condition.
+    Processing Logic:
+        - Read the text content of the CMakeLists.txt file using the read_text() method.
+        - Parse the read content to extract a list of dependencies.
+        - Check that 'Qt5Widgets' is present in the extracted dependencies."""
+    
     extracted_dependencies = cmake_parser.parse(content_cmakelists.read_text())
     """
     expected_dependencies = [
